@@ -28,15 +28,45 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_notch_bottom_bar: ^1.0.3
+  buttons_tabbar: ^1.3.8
+  contained_tab_bar_view: ^0.8.0
+  cupertino_icons: ^1.0.6
+  custom_alert_dialog_box: ^1.0.2
+  edittext: ^0.0.3
+  emoji_alert: ^1.1.0
+  
   flutter:
     sdk: flutter
+  flutter_html: ^3.0.0-beta.2
+  flutter_native_splash: ^2.4.0
+  flutter_otp_text_field: ^1.1.3+2
+  flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
+  get: ^4.6.6
+  http: ^1.1.0
+  image_cropper: ^6.0.0
+  image_picker: ^1.1.1
+  intl: ^0.19.0
+  loop_page_view: ^1.2.5
+  page_view_dot_indicator: ^2.3.0
+  permission_handler: ^11.3.1
+  remixicon: ^1.2.0
+  shared_preferences: ^2.2.0
+  shimmer: ^3.0.0
+  styled_divider: ^1.0.5
+  syncfusion_flutter_datepicker: ^25.2.6
+  touchable_opacity: ^1.2.0
+  file_picker: ^8.0.3
+  flutter_pdfview: ^1.3.2
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
+  
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -46,9 +76,16 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  flutter_native_text_input: ^2.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/icon.png"
+  min_sdk_android: 21
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -57,11 +94,19 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+flutter_native_splash:
+  color: "#97263E"
+  image: assets/images/logo_down_text.png
+  android_12:
+    color: "#97263E"
+    image: assets/images/logo_down_text.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
