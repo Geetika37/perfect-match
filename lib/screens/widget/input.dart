@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 
@@ -275,97 +276,6 @@ class InputPassword extends StatelessWidget {
   }
 }
 
-class InputTextwithTitle extends StatelessWidget {
-  const InputTextwithTitle({
-    super.key,
-    required this.title,
-    required this.hint,
-    required this.textController,
-    required this.keyboardType,
-    this.margin = 0,
-    required this.onChanged,
-    required this.validator,
-  });
-
-  final String title, hint;
-  final TextEditingController textController;
-  final TextInputType? keyboardType;
-  final double margin;
-  final Function(String) onChanged;
-  final String? Function(String?) validator;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: margin),
-      // padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10, top: 5),
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: AppColors.primary),
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.transparent,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            child: Text(
-              title,
-              style: const TextStyle(color: AppColors.primary, fontSize: 10),
-            ),
-          ),
-          // CupertinoTextField(
-          //   controller: textController,
-          //   keyboardType: keyboardType,
-          //   padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-          //   autocorrect: true,
-          //   cursorColor: Colors.black,
-          //   decoration: const BoxDecoration(),
-          //   style: const TextStyle(
-          //     fontSize: 13,
-          //     fontWeight: FontWeight.bold,
-          //     color: Colors.black,
-          //   ),
-          //   textCapitalization: TextCapitalization.sentences,
-          //   placeholderStyle: const TextStyle(
-          //     fontSize: 13,
-          //     fontWeight: FontWeight.bold,
-          //     color: Colors.black12,
-          //   ),
-          //   placeholder: hint,
-          // ),
-          TextFormField(
-            key: key,
-            onChanged: onChanged,
-            controller: textController,
-            keyboardType: keyboardType,
-            validator: validator,
-            autocorrect: true,
-            cursorColor: Colors.black,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              // contentPadding:
-              //     const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-              hintText: hint,
-              hintStyle: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-                color: Colors.black12,
-              ),
-            ),
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-            textCapitalization: TextCapitalization.sentences,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class DropdownTextwithTitle extends StatelessWidget {
   const DropdownTextwithTitle({
     super.key,
@@ -396,7 +306,7 @@ class DropdownTextwithTitle extends StatelessWidget {
         margin: EdgeInsets.only(top: margin),
         padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10, top: 5),
         decoration: BoxDecoration(
-          border: Border.all(width: 1, color: AppColors.primary),
+          border: Border.all(width: 1, color: AppColors.primarySecondary),
           borderRadius: BorderRadius.circular(10),
           color: Colors.transparent,
         ),
@@ -412,7 +322,7 @@ class DropdownTextwithTitle extends StatelessWidget {
                     child: Text(
                       title,
                       style: const TextStyle(
-                          color: AppColors.primary, fontSize: 10),
+                          color: AppColors.primaryLite, fontSize: 10),
                     ),
                   ),
                   Text(textValue.isNotEmpty ? textValue : hint,
@@ -426,10 +336,7 @@ class DropdownTextwithTitle extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(
-              icon,
-              size: 20,
-            )
+            SvgPicture.asset('assets/svg/calendar.svg')
           ],
         ),
       ),

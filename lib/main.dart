@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/screens/splashscreen/view/splash_screen.dart';
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,12 +29,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Lexend',
+        // fontFamily: GoogleFonts.lexend.toString(),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.trans,
         ),
       ),
       title: 'Perfect Match',
-      home:  SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }
