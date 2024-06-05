@@ -66,7 +66,7 @@ class _Profile5ScreenState extends State<Profile5Screen> {
       'Please select Family background,profession and Sibiling.',
       backgroundColor: Colors.red,
       colorText: Colors.white,
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
     );
   }
 

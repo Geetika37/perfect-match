@@ -156,6 +156,11 @@ class _InputMobileeState extends State<InputMobilee> {
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),
             ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
             contentPadding: const EdgeInsets.only(
               top: 30,
               left: 10,
@@ -239,6 +244,11 @@ class _InputEmailState extends State<InputEmail> {
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),
             ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
             contentPadding: const EdgeInsets.only(
               top: 30,
               left: 10,
@@ -317,6 +327,11 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),
@@ -407,6 +422,11 @@ class _DropdownState extends State<Dropdown> {
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),

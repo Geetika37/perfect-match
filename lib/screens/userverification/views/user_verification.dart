@@ -13,7 +13,6 @@ import 'package:perfectmatch/screens/userverification/widgets/bottomsheet_userve
 import 'package:perfectmatch/utils/common_helper.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
 
-
 class UserVerification extends StatefulWidget {
   UserVerification({super.key});
 
@@ -49,7 +48,7 @@ class _UserVerificationState extends State<UserVerification> {
   Widget displayFile(String filePath) {
     String extension = fileType ?? filePath.split('.').last;
     if (extension == 'pdf') {
-      return Container(
+      return SizedBox(
         height: 200,
         child: PDFView(
           filePath: filePath,
@@ -60,8 +59,8 @@ class _UserVerificationState extends State<UserVerification> {
     } else {
       return Column(
         children: [
-          Icon(Icons.insert_drive_file, size: 100),
-          SizedBox(height: 10),
+          const Icon(Icons.insert_drive_file, size: 100),
+          const SizedBox(height: 10),
           Text('File: ${filePath.split('/').last}',
               textAlign: TextAlign.center),
         ],
@@ -129,7 +128,7 @@ class _UserVerificationState extends State<UserVerification> {
                   onTap: () {
                     Get.bottomSheet(
                       backgroundColor: Colors.white,
-                      BottomSheetImageUpload(),
+                      const BottomSheetImageUpload(),
                     );
                   },
                   isImagePath: userVerificationController
@@ -144,7 +143,16 @@ class _UserVerificationState extends State<UserVerification> {
                 height: screenHeight * 0.06,
                 width: screenWidth,
                 text: 'Upload',
-                onTap: () {},
+                onTap: () {
+                  if (userVerificationController
+                          .selectedImagePath.value.isEmpty ||
+                      userVerificationController
+                          .governmentIdFilePath.value.isEmpty) {
+                    showErrorMessage(context, message: 'Upload all Files');
+                  } else {
+                    showSuccessMessage(context, message: 'Success');
+                  }
+                },
                 radius: 10,
                 textSize: 16,
                 fontWeight: FontWeight.w600,
@@ -155,6 +163,28 @@ class _UserVerificationState extends State<UserVerification> {
         ),
       ),
     ));
+  }
+
+  void showSuccessMessage(BuildContext context, {required String message}) {
+    final snackBar = SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.green,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void showErrorMessage(BuildContext context, {required String message}) {
+    final snackBar = SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 

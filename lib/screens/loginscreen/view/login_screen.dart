@@ -144,25 +144,10 @@ class _LoginScreenState extends State<LoginScreen> {
       GlobalKey<FormFieldState>? keyName, GlobalKey<FormState>? formKey) {
     if (formKey != null) {
       if (formKey.currentState?.validate() ?? false) {
-        showSuccessMessage(context, message: 'Form Validated');
         Get.to(() => const OtpScreen());
       }
     } else if (keyName != null) {
       keyName.currentState?.validate();
     }
-  }
-
-  void showSuccessMessage(
-    BuildContext context, {
-    required String message,
-  }) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.green,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

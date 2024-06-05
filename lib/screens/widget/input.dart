@@ -176,6 +176,10 @@ class InputText extends StatelessWidget {
           borderSide: const BorderSide(width: 1, color: Color(0x7FF05E87)),
           borderRadius: BorderRadius.circular(10),
         ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(width: 1, color: Color(0x7FF05E87)),
+          borderRadius: BorderRadius.circular(10),
+        ),
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         hintText: hint,
         hintStyle: const TextStyle(

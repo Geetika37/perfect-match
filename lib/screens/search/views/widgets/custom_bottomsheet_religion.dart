@@ -8,7 +8,6 @@ import 'package:perfectmatch/screens/search/views/widgets/outlined_button.dart';
 import 'package:perfectmatch/screens/search/views/widgets/textfield_search.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
 
-
 class CustomBottomSheet extends StatefulWidget {
   const CustomBottomSheet({super.key});
 
@@ -36,12 +35,55 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: screenHeight * 0.04),
-          TextFieldSearch(
-            color: const Color(0xffFFFFFF),
-            iconImage: Image.asset(getAssetImage('search')),
-            text: 'search',
-            height: screenHeight * 0.06,
-            width: screenWidth,
+          // TextFieldSearch(
+          //   color: const Color(0xffFFFFFF),
+          //   iconImage: Image.asset(getAssetImage('search')),
+          //   text: 'search',
+          //   height: screenHeight * 0.06,
+          //   width: screenWidth,
+          // ),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Image.asset(getAssetImage('search')),
+              hintText: 'Search',
+              hintStyle: lexend(
+                const Color(0xff000000),
+                12,
+                FontWeight.w300,
+              ),
+              filled: true,
+              fillColor: const Color.fromARGB(255, 255, 255, 255),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
           ),
           SizedBox(height: screenHeight * 0.02),
           _buildCheckboxList(),
@@ -134,12 +176,55 @@ class _CustomBottomSheetReligionOneSelectedState
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: screenHeight * 0.04),
-          TextFieldSearch(
-            color: const Color(0xffFFFFFF),
-            iconImage: Image.asset(getAssetImage('search')),
-            text: 'search',
-            height: screenHeight * 0.06,
-            width: screenWidth,
+          // TextFieldSearch(
+          //   color: const Color(0xffFFFFFF),
+          //   iconImage: Image.asset(getAssetImage('search')),
+          //   text: 'search',
+          //   height: screenHeight * 0.06,
+          //   width: screenWidth,
+          // ),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Image.asset(getAssetImage('search')),
+              hintText: 'Search',
+              hintStyle: lexend(
+                const Color(0xff000000),
+                12,
+                FontWeight.w300,
+              ),
+              filled: true,
+              fillColor: const Color.fromARGB(255, 255, 255, 255),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Color(0xff666666),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
           ),
           SizedBox(height: screenHeight * 0.02),
           _buildCheckboxList(),

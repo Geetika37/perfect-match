@@ -404,12 +404,12 @@ class _Profile1ScreenState extends State<Profile1Screen> {
                     text: 'Next',
                     onTap: () {
                       HapticFeedback.mediumImpact();
-                      // if (_validateForm()) {
-                      //   showSuccessMessage(context,
-                      //       message: 'Submitted successfully');
-                      //   Get.to(const Profile2Screen());
-                      // }
-                      Get.to(const Profile2Screen());
+                      if (_validateForm()) {
+                        // showSuccessMessage(context,
+                        //     message: 'Submitted successfully');
+                        Get.to(const Profile2Screen());
+                      }
+                      // Get.to(const Profile2Screen());
                     },
                   ),
                   hSpace(20),
@@ -441,42 +441,41 @@ class _Profile1ScreenState extends State<Profile1Screen> {
     setState(() {});
   }
 
-  // bool _validateForm() {
-  //   if (!formKey.currentState!.validate()) {
-  //     return false;
-  //   }
+  bool _validateForm() {
+    if (!formKey.currentState!.validate()) {
+      return false;
+    }
 
-  //   for (var key in _uploadPicBoxKeys) {
-  //     if (!key.currentState!.isImageSelected()) {
-  //       isImageAdded.value = true;
-  //       showErrorMessage(context,
-  //           message: 'Please upload all profile pictures.');
-  //       return false;
-  //     }
-  //   }
+    for (var key in _uploadPicBoxKeys) {
+      if (!key.currentState!.isImageSelected()) {
+        isImageAdded.value = true;
 
-  //   return true;
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  // void showSuccessMessage(BuildContext context, {required String message}) {
+  //   final snackBar = SnackBar(
+  //     content: Text(
+  //       message,
+  //       style: const TextStyle(color: Colors.white),
+  //     ),
+  //     backgroundColor: Colors.green,
+  //   );
+  //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
   // }
 
-  void showSuccessMessage(BuildContext context, {required String message}) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.green,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  void showErrorMessage(BuildContext context, {required String message}) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.red,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
+  // void showErrorMessage(BuildContext context, {required String message}) {
+  //   final snackBar = SnackBar(
+  //     content: Text(
+  //       message,
+  //       style: const TextStyle(color: Colors.white),
+  //     ),
+  //     backgroundColor: Colors.red,
+  //   );
+  //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  // }
 }

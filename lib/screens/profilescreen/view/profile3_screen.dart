@@ -53,7 +53,7 @@ class _Profile3ScreenState extends State<Profile3Screen> {
       'Please select at least one hobby and one interest.',
       backgroundColor: Colors.red,
       colorText: Colors.white,
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
     );
   }
 

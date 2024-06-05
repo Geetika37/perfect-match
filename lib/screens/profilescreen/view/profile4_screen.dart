@@ -47,7 +47,7 @@ class _Profile4ScreenState extends State<Profile4Screen> {
       'Please select Family Type and Sibiling.',
       backgroundColor: Colors.red,
       colorText: Colors.white,
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
     );
   }
 
