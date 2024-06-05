@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Lexend',
-        // fontFamily: GoogleFonts.lexend.toString(),
+        // fontFamily: 'Lexend',
+        fontFamily: GoogleFonts.lexend().fontFamily,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.trans,
         ),

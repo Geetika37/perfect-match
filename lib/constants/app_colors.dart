@@ -15,6 +15,8 @@ class AppColors {
   static const Color creditBalanceButtonColor = Color(0xFFFE2929);
   static const Color logoutButtonColor = Color(0xFFFE2929);
   static const Color blueColor = Color(0xFFBBE4F6);
-  static const Color trans = Color(0xBBE4F6);
+  static const Color trans = Color(0xFFBBE4F6);
   static const Color fundingFormBgColor = Color(0xFF1C1B1B);
+  static const Color textFormFieldColor = Color(0xFF121212);
+
 }

@@ -8,7 +8,6 @@ import 'package:perfectmatch/screens/profilescreen/widgets/check_list_only_one.d
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
-
 class Profile4Screen extends StatefulWidget {
   const Profile4Screen({super.key});
 
@@ -17,7 +16,6 @@ class Profile4Screen extends StatefulWidget {
 }
 
 class _Profile4ScreenState extends State<Profile4Screen> {
-
   // familyTypeList
   final List<String> familyTypeList = [
     'Nuclear',
@@ -37,6 +35,21 @@ class _Profile4ScreenState extends State<Profile4Screen> {
   int? selectedSiblingsNumber;
   final List<bool> selectedSiblingsNumberList =
       List.generate(5, (index) => false);
+
+  bool isValidSelection() {
+    return selectedFamilyTypeList.contains(true) &&
+        selectedSiblingsNumberList.contains(true);
+  }
+
+  void validationErorrMessage() {
+    Get.snackbar(
+      'Validation Error',
+      'Please select Family Type and Sibiling.',
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +126,11 @@ class _Profile4ScreenState extends State<Profile4Screen> {
               PrimaryButton(
                 text: 'Next',
                 onTap: () {
-                  Get.to(() => const Profile5Screen());
+                  if (isValidSelection()) {
+                    Get.to(() => const Profile5Screen());
+                  } else {
+                    validationErorrMessage();
+                  }
                 },
               ),
               hSpace(10),

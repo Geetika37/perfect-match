@@ -10,7 +10,6 @@ import 'package:perfectmatch/screens/profilescreen/widgets/check_list_only_one.d
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
-
 class Profile5Screen extends StatefulWidget {
   const Profile5Screen({super.key});
 
@@ -54,6 +53,22 @@ class _Profile5ScreenState extends State<Profile5Screen> {
   ];
 
   final List<bool> selectedprofession = List.generate(9, (index) => false);
+
+  bool isValidSelection() {
+    return selectedfamilyBackgroundList.contains(true) &&
+        selectedsiblingsNumberList.contains(true) &&
+        selectedprofession.contains(true);
+  }
+
+  void validationErorrMessage() {
+    Get.snackbar(
+      'Validation Error',
+      'Please select Family background,profession and Sibiling.',
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +160,11 @@ class _Profile5ScreenState extends State<Profile5Screen> {
               PrimaryButton(
                 text: 'Next',
                 onTap: () {
-                  Get.to(() => const MainScreen());
+                  if (isValidSelection()) {
+                    Get.to(() => const MainScreen());
+                  } else {
+                    validationErorrMessage();
+                  }
                 },
               ),
               hSpace(10),

@@ -35,7 +35,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 )),
             Container(
               alignment: Alignment.center,
-              padding:const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               width: double.infinity,
               height: 280,
               decoration: const ShapeDecoration(
@@ -58,7 +58,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       color: Color(0xFF121212),
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Lexend',
                     ),
                   ),
                   hSpace(5),
@@ -66,18 +65,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     'Focuses on the idea of finding a soulmate, someone who perfectly complements the user.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xCC121212),
-                      fontSize: 14,
-                      fontFamily: 'Lexend',
-                      height: 1.2,
-                    ),
+                        color: Color(0xCC121212),
+                        fontSize: 14,
+                        height: 1.2,
+                        fontWeight: FontWeight.w300),
                   ),
                   hSpace(30),
                   PrimaryButton(
                     width: 250,
                     text: 'Get Started',
                     onTap: () {
-                      Get.off(() =>const LoginScreen());
+                      Get.off(() => const LoginScreen());
                     },
                   )
                 ],

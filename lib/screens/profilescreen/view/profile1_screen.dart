@@ -243,6 +243,7 @@ class _Profile1ScreenState extends State<Profile1Screen> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController heightController = TextEditingController();
+
   TextEditingController _dateController = TextEditingController();
   String _selectedDate = '';
   RxBool isImageAdded = false.obs;
@@ -337,7 +338,7 @@ class _Profile1ScreenState extends State<Profile1Screen> {
                   InputMobilee(
                     labelText: 'Mobile',
                     hintText: 'Enter your Mobile Number',
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                     textController: phoneController,
                   ),
                   hSpace(screenHeight * 0.01),
@@ -364,16 +365,21 @@ class _Profile1ScreenState extends State<Profile1Screen> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Expanded(
-                        child: DropdownHeights(
-                          title: 'Heights',
-                          hint: 'Heights',
-                          icon: Icons.arrow_drop_down_sharp,
+                      Expanded(
+                        // child: DropdownHeights(
+                        //   title: 'Heights',
+                        //   hint: 'Heights',
+                        //   icon: Icons.arrow_drop_down_sharp,
+                        // ),
+                        child: InputTextFormField(
+                          labelText: 'Heights',
+                          hintText: 'Heights',
+                          textController: heightController,
                         ),
                       ),
                       wSpace(10),
                       const Expanded(
-                        child: DropdownHeights(
+                        child: Dropdown(
                           title: 'Blood Group',
                           hint: 'Blood Group',
                           icon: Icons.arrow_drop_down_sharp,
@@ -382,13 +388,13 @@ class _Profile1ScreenState extends State<Profile1Screen> {
                     ],
                   ),
                   hSpace(screenHeight * 0.01),
-                  const DropdownHeights(
+                  const Dropdown(
                     title: 'Profession',
                     hint: 'Choose profession',
                     icon: Icons.arrow_drop_down_sharp,
                   ),
                   hSpace(screenHeight * 0.01),
-                  const DropdownHeights(
+                  const Dropdown(
                     title: 'Highest Education',
                     hint: 'Choose highest education',
                     icon: Icons.arrow_drop_down_sharp,
@@ -398,11 +404,12 @@ class _Profile1ScreenState extends State<Profile1Screen> {
                     text: 'Next',
                     onTap: () {
                       HapticFeedback.mediumImpact();
-                      if (_validateForm()) {
-                        showSuccessMessage(context,
-                            message: 'Submitted successfully');
-                        Get.to(const Profile2Screen());
-                      }
+                      // if (_validateForm()) {
+                      //   showSuccessMessage(context,
+                      //       message: 'Submitted successfully');
+                      //   Get.to(const Profile2Screen());
+                      // }
+                      Get.to(const Profile2Screen());
                     },
                   ),
                   hSpace(20),
@@ -434,22 +441,22 @@ class _Profile1ScreenState extends State<Profile1Screen> {
     setState(() {});
   }
 
-  bool _validateForm() {
-    if (!formKey.currentState!.validate()) {
-      return false;
-    }
+  // bool _validateForm() {
+  //   if (!formKey.currentState!.validate()) {
+  //     return false;
+  //   }
 
-    for (var key in _uploadPicBoxKeys) {
-      if (!key.currentState!.isImageSelected()) {
-        isImageAdded.value = true;
-        showErrorMessage(context,
-            message: 'Please upload all profile pictures.');
-        return false;
-      }
-    }
+  //   for (var key in _uploadPicBoxKeys) {
+  //     if (!key.currentState!.isImageSelected()) {
+  //       isImageAdded.value = true;
+  //       showErrorMessage(context,
+  //           message: 'Please upload all profile pictures.');
+  //       return false;
+  //     }
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   void showSuccessMessage(BuildContext context, {required String message}) {
     final snackBar = SnackBar(

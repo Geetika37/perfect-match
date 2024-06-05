@@ -328,11 +328,11 @@ class DropdownTextwithTitle extends StatelessWidget {
                   Text(textValue.isNotEmpty ? textValue : hint,
                       style: TextStyle(
                           fontSize: 13,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w300,
                           color: textValue.isNotEmpty
                               ? Colors.black
                               : Colors.black12,
-                          height: 1)),
+                          height: 1.1)),
                 ],
               ),
             ),

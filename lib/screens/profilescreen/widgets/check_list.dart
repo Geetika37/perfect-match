@@ -39,7 +39,7 @@ class CheckList extends StatelessWidget {
                 checkList[index],
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight: FontWeight.w400),
               ),
             ),

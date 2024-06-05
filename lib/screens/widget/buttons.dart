@@ -47,7 +47,6 @@ class PrimaryButton extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: textSize,
-            fontFamily: 'Lexend',
             height: 0.08,
             fontWeight: FontWeight.bold,
             letterSpacing: -0.41,
@@ -110,7 +109,6 @@ class MyIconButton extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
-                fontFamily: 'Lexend',
                 height: 0.08,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.41,
@@ -171,7 +169,6 @@ class SocialButton extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: textSize,
-                fontFamily: 'Lexend',
                 height: 0.08,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.41,
@@ -242,7 +239,6 @@ class DualtoneButton extends StatelessWidget {
                 style: TextStyle(
                   color: const Color(0x99121212),
                   fontSize: textSize,
-                  fontFamily: 'Lexend',
                   letterSpacing: -0.05,
                 ),
               ),
@@ -252,7 +248,6 @@ class DualtoneButton extends StatelessWidget {
                   color: const Color(0xFFF05E87),
                   fontSize: textSize,
                   fontWeight: FontWeight.w500,
-                  fontFamily: 'Lexend',
                   letterSpacing: -0.05,
                 ),
               ),
@@ -430,7 +425,6 @@ class UpdateButton extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 11,
-                          fontFamily: 'Lexend',
                           height: 1.3,
                           fontWeight: FontWeight.w500,
                           letterSpacing: -0.41,
@@ -454,7 +448,6 @@ class UpdateButton extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: textSize,
-                          fontFamily: 'Lexend',
                           height: 1.3,
                           fontWeight: FontWeight.w500,
                           letterSpacing: -0.41,

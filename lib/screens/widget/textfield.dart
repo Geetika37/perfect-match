@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
-import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 
 // name textformfield
@@ -61,7 +59,17 @@ class _InputNameState extends State<InputName> {
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),
             ),
+            disabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
             errorBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),
@@ -71,17 +79,9 @@ class _InputNameState extends State<InputName> {
               left: 10,
             ),
             hintText: widget.hint,
-            hintStyle: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: Colors.black12,
-            ),
+            hintStyle: lexend(Colors.black12, 14, FontWeight.w400),
           ),
-          style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: lexend(AppColors.textFormFieldColor, 14, FontWeight.w300),
           textCapitalization: TextCapitalization.sentences,
         ),
         Positioned(
@@ -161,17 +161,9 @@ class _InputMobileeState extends State<InputMobilee> {
               left: 10,
             ),
             hintText: widget.hintText,
-            hintStyle: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: Colors.black12,
-            ),
+            hintStyle: lexend(Colors.black12, 14, FontWeight.w400),
           ),
-          style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: lexend(AppColors.textFormFieldColor, 14, FontWeight.w300),
           textCapitalization: TextCapitalization.sentences,
         ),
         Positioned(
@@ -252,17 +244,9 @@ class _InputEmailState extends State<InputEmail> {
               left: 10,
             ),
             hintText: widget.hintText,
-            hintStyle: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: Colors.black12,
-            ),
+            hintStyle: lexend(Colors.black12, 14, FontWeight.w400),
           ),
-          style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: lexend(AppColors.textFormFieldColor, 14, FontWeight.w300),
           textCapitalization: TextCapitalization.sentences,
         ),
         Positioned(
@@ -278,9 +262,95 @@ class _InputEmailState extends State<InputEmail> {
   }
 }
 
-// dropdown Heights
-class DropdownHeights extends StatefulWidget {
-  const DropdownHeights({
+// textformfield
+
+class InputTextFormField extends StatefulWidget {
+  const InputTextFormField(
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      required this.textController,
+      this.keyboardType});
+
+  final String labelText, hintText;
+  final TextEditingController textController;
+  final TextInputType? keyboardType;
+
+  @override
+  State<InputTextFormField> createState() => _InputTextFormFieldState();
+}
+
+class _InputTextFormFieldState extends State<InputTextFormField> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(
+        top: 10,
+      ),
+      child: Stack(children: [
+        TextFormField(
+          controller: widget.textController,
+          keyboardType: widget.keyboardType,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return 'Enter value';
+            } else {
+              return null;
+            }
+          },
+          autocorrect: true,
+          cursorColor: Colors.black,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 1, color: AppColors.primarySecondary),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            contentPadding: const EdgeInsets.only(
+              top: 30,
+              left: 10,
+            ),
+            hintText: widget.hintText,
+            hintStyle: lexend(Colors.black12, 14, FontWeight.w400),
+          ),
+          style: const TextStyle(
+              fontSize: 14,
+              color: AppColors.textFormFieldColor,
+              fontWeight: FontWeight.w300,
+              height: 1.7),
+          textCapitalization: TextCapitalization.sentences,
+        ),
+        Positioned(
+          top: 3,
+          left: 10,
+          child: Text(
+            widget.labelText,
+            style: lexend(AppColors.primaryLite, 10, FontWeight.w400),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+// dropdown
+class Dropdown extends StatefulWidget {
+  const Dropdown({
     super.key,
     required this.title,
     required this.hint,
@@ -294,10 +364,10 @@ class DropdownHeights extends StatefulWidget {
   final IconData icon;
 
   @override
-  State<DropdownHeights> createState() => _DropdownHeightsState();
+  State<Dropdown> createState() => _DropdownState();
 }
 
-class _DropdownHeightsState extends State<DropdownHeights> {
+class _DropdownState extends State<Dropdown> {
   late String dropdownValue;
 
   @override
@@ -345,12 +415,6 @@ class _DropdownHeightsState extends State<DropdownHeights> {
               top: 30,
               left: 10,
             ),
-            // hintText: widget.hintText,
-            hintStyle: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: Colors.black12,
-            ),
           ),
           isExpanded: true,
           value: dropdownValue,
@@ -360,10 +424,10 @@ class _DropdownHeightsState extends State<DropdownHeights> {
           ),
           iconSize: 24,
           style: const TextStyle(
-            color: Colors.black87,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
+              color: Colors.black87,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              height: 1.5),
           onChanged: (String? newValue) {
             setState(() {
               dropdownValue = newValue!;
@@ -375,17 +439,15 @@ class _DropdownHeightsState extends State<DropdownHeights> {
               value: value,
               child: Text(
                 value,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: Color.fromRGBO(152, 151, 151, 1),
-                ),
+                style: value == 'Select'
+                    ? lexend(Colors.black12, 14, FontWeight.w400)
+                    : lexend(AppColors.textFormFieldColor, 14, FontWeight.w400),
               ),
             );
           }).toList(),
         ),
         Positioned(
-          top: 3,
+          top: 2,
           left: 10,
           child: Text(
             widget.title,

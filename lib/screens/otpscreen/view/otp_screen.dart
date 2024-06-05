@@ -43,7 +43,6 @@ class _OtpScreenState extends State<OtpScreen> {
                 style: TextStyle(
                   color: Color(0xFF121212),
                   fontSize: 20,
-                  fontFamily: 'Lexend',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -54,7 +53,6 @@ class _OtpScreenState extends State<OtpScreen> {
                 style: TextStyle(
                   color: Color(0x99121212),
                   fontSize: 13,
-                  fontFamily: 'Lexend',
                   height: 1.5,
                   letterSpacing: -0.05,
                 ),

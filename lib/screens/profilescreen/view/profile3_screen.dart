@@ -7,7 +7,6 @@ import 'package:perfectmatch/screens/profilescreen/widgets/check_list.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
-
 class Profile3Screen extends StatefulWidget {
   const Profile3Screen({super.key});
 
@@ -38,12 +37,25 @@ class _Profile3ScreenState extends State<Profile3Screen> {
     'Socializing',
     'Volunteering',
     'Outdoor Activities',
-    'Outdoor Activities',
     'Other',
   ];
 
   final List<bool> selectedHobbies = List.generate(10, (index) => false);
   final List<bool> selectedInterest = List.generate(10, (index) => false);
+
+  bool isValidSelection() {
+    return selectedHobbies.contains(true) && selectedInterest.contains(true);
+  }
+
+  void validationErorrMessage() {
+    Get.snackbar(
+      'Validation Error',
+      'Please select at least one hobby and one interest.',
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +120,11 @@ class _Profile3ScreenState extends State<Profile3Screen> {
             PrimaryButton(
                 text: 'Next',
                 onTap: () {
-                  Get.to(() => const Profile4Screen());
+                  if (isValidSelection()) {
+                    Get.to(const Profile4Screen());
+                  } else {
+                    validationErorrMessage();
+                  }
                 }),
             hSpace(10),
           ],
