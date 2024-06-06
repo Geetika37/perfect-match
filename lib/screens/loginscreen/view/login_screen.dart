@@ -26,17 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController emailMobileInput = TextEditingController();
 
-  String? _emailMobileValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Email or Phone cannot be empty';
-    }
-    if (!RegExp(_emailRegex).hasMatch(value) &&
-        !RegExp(_phoneRegex).hasMatch(value)) {
-      return 'Please enter valid Email or Phone';
-    }
-    return null;
-  }
-
   @override
   Widget build(BuildContext context) {
     double deviceHeight = getDeviceHeight(context);
@@ -138,6 +127,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     ));
+  }
+
+  String? _emailMobileValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Email or Phone cannot be empty';
+    }
+    if (!RegExp(_emailRegex).hasMatch(value) &&
+        !RegExp(_phoneRegex).hasMatch(value)) {
+      return 'Please enter valid Email or Phone';
+    }
+    return null;
   }
 
   void doValidation(

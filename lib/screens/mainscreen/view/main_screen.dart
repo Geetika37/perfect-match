@@ -1,9 +1,9 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
-import 'package:perfectmatch/screens/mainscreen/view/pages/explore_page.dart';
-import 'package:perfectmatch/screens/mainscreen/view/pages/profiles_page.dart';
-import 'package:perfectmatch/screens/moreprofilescreen/more_profile.dart';
+import 'package:perfectmatch/screens/mainscreen/view/screens/explore_page.dart';
+import 'package:perfectmatch/screens/mainscreen/view/screens/profiles_page.dart';
+import 'package:perfectmatch/screens/moreprofilescreen/views/more_profile.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
 import 'package:remixicon/remixicon.dart';

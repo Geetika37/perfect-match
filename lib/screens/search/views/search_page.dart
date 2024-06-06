@@ -4,12 +4,13 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/search/views/widgets/custom_bottomsheet_caste.dart';
-import 'package:perfectmatch/screens/search/views/widgets/custom_bottomsheet_religion.dart';
-import 'package:perfectmatch/screens/search/views/widgets/custom_slider.dart';
-import 'package:perfectmatch/screens/search/views/widgets/custom_textfield.dart';
-import 'package:perfectmatch/screens/search/views/widgets/outlined_button.dart';
-import 'package:perfectmatch/screens/search/views/widgets/textfield_search.dart';
+import 'package:perfectmatch/screens/search/widgets/custom_bottomsheet_caste.dart';
+import 'package:perfectmatch/screens/search/widgets/custom_bottomsheet_religion.dart';
+import 'package:perfectmatch/screens/search/widgets/custom_slider.dart';
+import 'package:perfectmatch/screens/search/widgets/custom_textfield.dart';
+import 'package:perfectmatch/screens/search/widgets/outlined_button.dart';
+import 'package:perfectmatch/screens/search/widgets/textfield_search.dart';
+import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/screens/widget/custom_appbar.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
 
@@ -362,74 +363,6 @@ class _LocationRowState extends State<LocationRow> {
           },
         )
       ],
-    );
-  }
-}
-
-class ButtonNormal extends StatelessWidget {
-  const ButtonNormal({
-    super.key,
-    required this.height,
-    required this.width,
-    required this.text,
-    required this.onTap,
-    this.gradient,
-    required this.radius,
-    this.iconOrImage,
-    required this.textSize,
-    required this.fontWeight,
-  });
-  final double height;
-  final double width;
-  final String text;
-  final Function() onTap;
-  final Widget? iconOrImage;
-  final Gradient? gradient;
-  final double radius, textSize;
-  final FontWeight fontWeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          gradient: gradient ??
-              const LinearGradient(
-                colors: [
-                  Color(0xFFEF5D89),
-                  Color(0xFFF588A5),
-                  Color(0xFFFAAFBE),
-                  Color(0xFFFDD7E4),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
-        ),
-        child: iconOrImage != null
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  iconOrImage!,
-                  SizedBox(
-                    width: screenWidth * 0.03,
-                  ),
-                  Text(
-                    text,
-                    style: lexend(Colors.white, textSize, fontWeight),
-                  )
-                ],
-              )
-            : Center(
-                child: Text(
-                  text,
-                  style: lexend(Colors.white, textSize, fontWeight),
-                ),
-              ),
-      ),
     );
   }
 }

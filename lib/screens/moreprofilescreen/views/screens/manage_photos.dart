@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/profilescreen/widgets/upload_picbox.dart';
+import 'package:perfectmatch/screens/widget/buttons.dart';
+import 'package:perfectmatch/screens/widget/upload_picbox.dart';
 import 'package:perfectmatch/screens/search/views/search_page.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
+import 'package:perfectmatch/screens/widget/snackbar.dart';
 
 class ManagePhotos extends StatefulWidget {
   const ManagePhotos({super.key});
@@ -110,25 +112,7 @@ class _ManagePhotosState extends State<ManagePhotos> {
     return true;
   }
 
-  void showSuccessMessage(BuildContext context, {required String message}) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.green,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
+  
 
-  void showErrorMessage(BuildContext context, {required String message}) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.red,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
+  
 }

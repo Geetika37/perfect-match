@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 
@@ -124,6 +125,7 @@ class _InputMobileeState extends State<InputMobilee> {
       ),
       child: Stack(children: [
         TextFormField(
+          maxLength: 10,
           controller: widget.textController,
           keyboardType: widget.keyboardType,
           validator: (value) {
@@ -135,6 +137,10 @@ class _InputMobileeState extends State<InputMobilee> {
           },
           autocorrect: true,
           cursorColor: Colors.black,
+          buildCounter: (BuildContext context,
+              {int? currentLength, int? maxLength, bool? isFocused}) {
+            return null; // Hides the counter
+          },
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderSide:

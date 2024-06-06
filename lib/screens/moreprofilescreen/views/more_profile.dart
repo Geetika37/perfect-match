@@ -3,14 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/moreprofilescreen/views/manage_photos.dart';
+import 'package:perfectmatch/screens/moreprofilescreen/models/setting_option_list.dart';
+import 'package:perfectmatch/screens/moreprofilescreen/views/screens/manage_photos.dart';
 import 'package:perfectmatch/screens/premiumplans/views/premium_plans.dart';
 import 'package:perfectmatch/screens/userverification/views/user_verification.dart';
+import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
-
-import '../search/views/search_page.dart';
-
 
 class MoreProfile extends StatefulWidget {
   const MoreProfile({super.key});
@@ -20,19 +19,6 @@ class MoreProfile extends StatefulWidget {
 }
 
 class _MoreProfileState extends State<MoreProfile> {
-  final List<Map<String, dynamic>> settingsOptions = [
-    {'image': 'icon1', 'text': 'Manage My Profile'},
-    {'image': 'icon2', 'text': 'Manage My Photos'},
-    {'image': 'icon3', 'text': 'Notifications'},
-    {'image': 'icon4', 'text': 'Set Language & Region'},
-    {'image': 'icon5', 'text': 'Family Involvement and Matchmaking'},
-    {'image': 'icon6', 'text': 'Integration with Wedding Service Providers'},
-    {'image': 'icon7', 'text': 'Account Settings'},
-    {'image': 'icon8', 'text': 'Community and Events'},
-    {'image': 'icon9', 'text': 'Feedback and Ratings'},
-    {'image': 'icon10', 'text': ' Customer Support'},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

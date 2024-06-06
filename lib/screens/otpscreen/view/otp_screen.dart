@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
-import 'package:perfectmatch/screens/profilescreen/view/profile1_screen.dart';
+import 'package:perfectmatch/screens/profilescreen/screens/profile1_screen/views/profile1_screen.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
 import '../../widget/buttons.dart';

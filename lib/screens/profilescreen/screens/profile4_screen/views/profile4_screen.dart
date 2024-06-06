@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/profilescreen/view/profile5_screen.dart';
+import 'package:perfectmatch/screens/profilescreen/screens/profile5_screen/views/profile5_screen.dart';
 import 'package:perfectmatch/screens/profilescreen/widgets/check_list_only_one.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
+import 'package:perfectmatch/screens/widget/snackbar.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
 class Profile4Screen extends StatefulWidget {
@@ -41,14 +42,9 @@ class _Profile4ScreenState extends State<Profile4Screen> {
         selectedSiblingsNumberList.contains(true);
   }
 
-  void validationErorrMessage() {
-    Get.snackbar(
-      'Validation Error',
-      'Please select Family Type and Sibiling.',
-      backgroundColor: Colors.red,
-      colorText: Colors.white,
-      snackPosition: SnackPosition.TOP,
-    );
+  void validationErrorMessage() {
+    showErrorMessage(context,
+        message: 'Please select Family Type and Sibiling.');
   }
 
   @override
@@ -129,7 +125,7 @@ class _Profile4ScreenState extends State<Profile4Screen> {
                   if (isValidSelection()) {
                     Get.to(() => const Profile5Screen());
                   } else {
-                    validationErorrMessage();
+                    validationErrorMessage();
                   }
                 },
               ),
@@ -140,4 +136,5 @@ class _Profile4ScreenState extends State<Profile4Screen> {
       ),
     );
   }
+
 }

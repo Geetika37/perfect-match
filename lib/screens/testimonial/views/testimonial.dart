@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 import 'package:perfectmatch/screens/search/views/search_page.dart';
-import 'package:perfectmatch/screens/testimonial/views/widgets/testimonial_container.dart';
+import 'package:perfectmatch/screens/testimonial/widgets/testimonial_container.dart';
+import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/screens/widget/custom_appbar.dart';
 
 

@@ -10,6 +10,10 @@ import 'package:perfectmatch/constants/styles/textstyle.dart';
 import 'package:perfectmatch/screens/search/views/search_page.dart';
 import 'package:perfectmatch/screens/userverification/controllers/user_verification_controller.dart';
 import 'package:perfectmatch/screens/userverification/widgets/bottomsheet_userverification.dart';
+import 'package:perfectmatch/screens/userverification/widgets/fileupload_container.dart';
+import 'package:perfectmatch/screens/userverification/widgets/photoupload_container.dart';
+import 'package:perfectmatch/screens/widget/buttons.dart';
+import 'package:perfectmatch/screens/widget/snackbar.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
 
@@ -165,124 +169,5 @@ class _UserVerificationState extends State<UserVerification> {
     ));
   }
 
-  void showSuccessMessage(BuildContext context, {required String message}) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.green,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  void showErrorMessage(BuildContext context, {required String message}) {
-    final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: const TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.red,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-}
-
-class UserVerificationContainer extends StatelessWidget {
-  const UserVerificationContainer({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.subTitle,
-    required this.buttonText,
-    required this.buttonIcon,
-    required this.onTap,
-    this.isImagePath = false,
-  });
-
-  final String image, title, subTitle, buttonText, buttonIcon;
-  final Function() onTap;
-  final bool isImagePath;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        isImagePath
-            ? Image.file(File(image))
-            : Image.asset(getAssetImage(image)),
-        hSpace(screenHeight * 0.05),
-        Text(
-          title,
-          style: lexend(Colors.black, 20, FontWeight.w500),
-        ),
-        hSpace(screenHeight * 0.01),
-        Text(
-          subTitle,
-          style: lexend(Colors.black, 12, FontWeight.w400),
-          maxLines: 2,
-          textAlign: TextAlign.center,
-        ),
-        hSpace(screenHeight * 0.05),
-        ButtonNormal(
-          height: screenHeight * 0.05,
-          width: screenWidth * 0.3,
-          text: buttonText,
-          onTap: onTap,
-          radius: 10,
-          textSize: 16,
-          fontWeight: FontWeight.w600,
-          iconOrImage: Image.asset(getAssetImage(buttonIcon)),
-        ),
-      ],
-    );
-  }
-}
-
-class UserVerificationContainerFileUpload extends StatelessWidget {
-  const UserVerificationContainerFileUpload({
-    super.key,
-    required this.fileWidget,
-    required this.title,
-    required this.subTitle,
-    required this.buttonText,
-    required this.buttonIcon,
-    required this.onTap,
-  });
-
-  final Widget fileWidget;
-  final String title, subTitle, buttonText, buttonIcon;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        fileWidget,
-        hSpace(screenHeight * 0.05),
-        Text(
-          title,
-          style: lexend(Colors.black, 20, FontWeight.w500),
-        ),
-        hSpace(screenHeight * 0.01),
-        Text(
-          subTitle,
-          style: lexend(Colors.black, 12, FontWeight.w400),
-          maxLines: 2,
-          textAlign: TextAlign.center,
-        ),
-        hSpace(screenHeight * 0.05),
-        ButtonNormal(
-          height: screenHeight * 0.05,
-          width: screenWidth * 0.3,
-          text: buttonText,
-          onTap: onTap,
-          radius: 10,
-          textSize: 16,
-          fontWeight: FontWeight.w600,
-          iconOrImage: Image.asset(getAssetImage(buttonIcon)),
-        ),
-      ],
-    );
-  }
+ 
 }
