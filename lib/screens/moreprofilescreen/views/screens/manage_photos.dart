@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/screens/widget/upload_picbox.dart';
-import 'package:perfectmatch/screens/search/views/search_page.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
 import 'package:perfectmatch/screens/widget/snackbar.dart';

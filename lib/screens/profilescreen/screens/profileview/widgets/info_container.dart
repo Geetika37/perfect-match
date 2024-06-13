@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profileview/views/profile_details.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 
 class InfoContainer extends StatelessWidget {

@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/search/views/search_page.dart';
 import 'package:perfectmatch/screens/search/widgets/outlined_button.dart';
-import 'package:perfectmatch/screens/search/widgets/textfield_search.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/utils/image_helper.dart';
 

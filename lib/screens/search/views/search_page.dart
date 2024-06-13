@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 import 'package:perfectmatch/screens/search/widgets/custom_bottomsheet_caste.dart';
@@ -23,7 +22,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _pinCodeController = TextEditingController();
+  final TextEditingController pinCodeController = TextEditingController();
   String selectedTitle = '';
 
   @override

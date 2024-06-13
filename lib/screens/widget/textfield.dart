@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -115,7 +114,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     text1: 'Already have an account? ',
                     text2: 'Login',
                     onTap: () {
-                      Get.off(() => LoginScreen());
+                      Get.off(() =>const LoginScreen());
                     },
                   )
                 ],
