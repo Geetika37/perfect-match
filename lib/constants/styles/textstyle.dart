@@ -16,3 +16,13 @@ TextStyle lobsterTwo(Color color, double fontSize, FontWeight fontWeight) {
     fontWeight: fontWeight,
   );
 }
+
+class CustomTextStyles {
+  static TextStyle custombuttom = const TextStyle(
+    color: Colors.white,
+    fontSize: 17,
+    height: 0.08,
+    fontWeight: FontWeight.bold,
+    letterSpacing: -0.41,
+  );
+}

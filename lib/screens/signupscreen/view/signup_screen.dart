@@ -29,7 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Container(
-          padding:const EdgeInsets.symmetric(vertical: 20, horizontal: 35),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 35),
           height: deviceHeight,
           child: Stack(
             children: [
@@ -52,7 +52,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                 const Text(
+                  const Text(
                     'Create your account and start your journey with us today!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -114,7 +114,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     text1: 'Already have an account? ',
                     text2: 'Login',
                     onTap: () {
-                      Get.off(() =>const LoginScreen());
+                      Get.off(() => LoginScreen());
                     },
                   )
                 ],

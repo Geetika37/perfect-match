@@ -75,7 +75,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     width: 250,
                     text: 'Get Started',
                     onTap: () {
-                      Get.off(() => const LoginScreen());
+                      Get.off(() => LoginScreen());
                     },
                   )
                 ],

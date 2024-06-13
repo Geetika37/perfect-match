@@ -8,6 +8,46 @@ import 'package:remixicon/remixicon.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 import '../../../constants/app_colors.dart';
 
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    this.width = double.infinity,
+    required this.widget,
+    required this.onTap,
+    this.textSize = 17,
+    this.height = 56,
+  });
+
+  final double width, textSize, height;
+  final Widget widget;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return TouchableOpacity(
+      onTap: onTap,
+      child: Container(
+          width: width,
+          height: height,
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+          decoration: ShapeDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment(-1, 0.05),
+              end: Alignment(1.00, -0.05),
+              colors: [Color(0xFFEF5D89), Color(0xFFF487A4), Color(0xFFFAAFBE)],
+            ),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                  width: 1, color: const Color(0x7FF05E87).withOpacity(0.1)),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          child: widget),
+    );
+  }
+}
+
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
@@ -509,9 +549,6 @@ class RoundButton extends StatelessWidget {
   }
 }
 
-
-
-
 class ButtonNormal extends StatelessWidget {
   const ButtonNormal({
     super.key,
@@ -579,5 +616,3 @@ class ButtonNormal extends StatelessWidget {
     );
   }
 }
-
-
