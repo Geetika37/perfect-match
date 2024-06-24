@@ -7,7 +7,7 @@ class DistrictController extends GetxController {
   var districts = [].obs;
   var isLoading = false.obs;
 
-  void fetchDistricts(int stateId) async {
+  Future<void> fetchDistricts(int stateId) async {
     try {
       isLoading(true);
       final response = await http.get(Uri.parse('${baseUrl}location/district?state_id=$stateId'));

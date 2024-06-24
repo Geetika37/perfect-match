@@ -7,7 +7,7 @@ class CityController extends GetxController {
   var cities = [].obs;
   var isLoading = false.obs;
 
-  void fetchCities(int districtId) async {
+  Future<void> fetchCities(int districtId) async {
     try {
       isLoading(true);
       final response = await http

@@ -24,6 +24,9 @@ class LocationView extends StatelessWidget {
     var selectedState = ''.obs;
     var selectedDistrict = ''.obs;
 
+    RxBool selectedItem1 = false.obs;
+    RxBool selectedItem2 = false.obs;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.background,
@@ -31,11 +34,9 @@ class LocationView extends StatelessWidget {
           backgroundColor: AppColors.background,
           leading: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-            child: BButton(
-              onTap: () {
-                Get.back();
-              },
-            ),
+            child: BButton(onTap: () {
+              Get.back();
+            }),
           ),
         ),
         body: Padding(
@@ -72,6 +73,7 @@ class LocationView extends StatelessWidget {
                     onChanged: (String? newValue) {
                       if (newValue != null) {
                         selectedState.value = newValue;
+                        selectedItem1.value = true;
                         districtController.fetchDistricts(int.parse(newValue));
                       }
                     },
@@ -79,45 +81,54 @@ class LocationView extends StatelessWidget {
                 }),
                 hSpace(screenHeight * 0.01),
                 Obx(() {
-                  if (districtController.isLoading.value) {
-                    return const Center(child: CircularProgressIndicator());
+                  if (selectedItem1.value) {
+                    if (districtController.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return DropdownState(
+                      title: 'District',
+                      hint: 'Select your district',
+                      icon: Icons.arrow_drop_down_sharp,
+                      stateController: selectedDistrict,
+                      items: districtController.districts.map((district) {
+                        return DropdownMenuItem(
+                          value: district['id'].toString(),
+                          child: Text(district['name']),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          selectedDistrict.value = newValue;
+                          selectedItem2.value = true;
+                          cityController.fetchCities(int.parse(newValue));
+                        }
+                      },
+                    );
+                  } else {
+                    return const SizedBox();
                   }
-                  return DropdownState(
-                    title: 'District',
-                    hint: 'Select your district',
-                    icon: Icons.arrow_drop_down_sharp,
-                    stateController: selectedDistrict,
-                    items: districtController.districts.map((district) {
-                      return DropdownMenuItem(
-                        value: district['id'].toString(),
-                        child: Text(district['name']),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      if (newValue != null) {
-                        selectedDistrict.value = newValue;
-                        cityController.fetchCities(int.parse(newValue));
-                      }
-                    },
-                  );
                 }),
                 hSpace(screenHeight * 0.01),
                 Obx(() {
-                  if (cityController.isLoading.value) {
-                    return const Center(child: CircularProgressIndicator());
+                  if (selectedItem2.value) {
+                    if (cityController.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return DropdownState(
+                      title: 'City',
+                      hint: 'Select your city',
+                      icon: Icons.arrow_drop_down_sharp,
+                      stateController: selectedDistrict,
+                      items: cityController.cities.map((city) {
+                        return DropdownMenuItem(
+                          value: city['id'].toString(),
+                          child: Text(city['name']),
+                        );
+                      }).toList(),
+                    );
+                  } else {
+                    return const SizedBox();
                   }
-                  return DropdownState(
-                    title: 'City',
-                    hint: 'Select your city',
-                    icon: Icons.arrow_drop_down_sharp,
-                    stateController: selectedDistrict,
-                    items: cityController.cities.map((city) {
-                      return DropdownMenuItem(
-                        value: city['id'].toString(),
-                        child: Text(city['name']),
-                      );
-                    }).toList(),
-                  );
                 }),
                 const Spacer(),
                 PrimaryButton(
