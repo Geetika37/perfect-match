@@ -1,12 +1,11 @@
+// email textformfield
+
 import 'package:flutter/material.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 
-
-// textformfield
-
-class InputTextFormField extends StatefulWidget {
-  const InputTextFormField(
+class InputEmail extends StatefulWidget {
+  const InputEmail(
       {super.key,
       required this.labelText,
       required this.hintText,
@@ -18,23 +17,22 @@ class InputTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
 
   @override
-  State<InputTextFormField> createState() => _InputTextFormFieldState();
+  State<InputEmail> createState() => _InputEmailState();
 }
 
-class _InputTextFormFieldState extends State<InputTextFormField> {
+class _InputEmailState extends State<InputEmail> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-        top: 10,
-      ),
+      padding: const EdgeInsets.only(top: 10),
       child: Stack(children: [
         TextFormField(
           controller: widget.textController,
           keyboardType: widget.keyboardType,
           validator: (value) {
-            if (value!.isEmpty) {
-              return 'Enter value';
+            if (value!.isEmpty ||
+                !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value)) {
+              return 'Enter Correct Email ID';
             } else {
               return null;
             }
@@ -67,18 +65,11 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
                   const BorderSide(width: 1, color: AppColors.primarySecondary),
               borderRadius: BorderRadius.circular(10),
             ),
-            contentPadding: const EdgeInsets.only(
-              top: 30,
-              left: 10,
-            ),
+            contentPadding: const EdgeInsets.only(top: 30, left: 10),
             hintText: widget.hintText,
             hintStyle: lexend(Colors.black12, 14, FontWeight.w400),
           ),
-          style: const TextStyle(
-              fontSize: 14,
-              color: AppColors.textFormFieldColor,
-              fontWeight: FontWeight.w300,
-              height: 1.7),
+          style: lexend(AppColors.textFormFieldColor, 14, FontWeight.w300),
           textCapitalization: TextCapitalization.sentences,
         ),
         Positioned(
@@ -93,5 +84,3 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
     );
   }
 }
-
-

@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profile5_screen/views/profile5_screen.dart';
-import 'package:perfectmatch/screens/profilescreen/widgets/check_list_only_one.dart';
+import 'package:perfectmatch/screens/signupscreen/controllers/controller.dart';
+import 'package:perfectmatch/screens/signupscreen/view/screens/profile5_screen.dart';
+import 'package:perfectmatch/screens/signupscreen/widgets/check_list_only_one.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/screens/widget/snackbar.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
@@ -17,6 +18,8 @@ class Profile4Screen extends StatefulWidget {
 }
 
 class _Profile4ScreenState extends State<Profile4Screen> {
+  final RegisterController registerController = Get.find(); // Get reference to RegisterController
+
   // familyTypeList
   final List<String> familyTypeList = [
     'Nuclear',
@@ -89,6 +92,8 @@ class _Profile4ScreenState extends State<Profile4Screen> {
                         selectedFamilyTypeList[i] = i == index;
                       }
                       selectedFamilyType = index;
+                      registerController.familyTypeController.value =
+                          familyTypeList[index]; // Store selected family type
                     });
                   },
                   crossAxisCount: 3,
@@ -113,6 +118,8 @@ class _Profile4ScreenState extends State<Profile4Screen> {
                         selectedSiblingsNumberList[i] = i == index;
                       }
                       selectedSiblingsNumber = index;
+                      registerController.noSiblingsController.value =
+                          siblingsNumberList[index]; // Store selected number of siblings
                     });
                   },
                   crossAxisCount: 1,
@@ -136,5 +143,4 @@ class _Profile4ScreenState extends State<Profile4Screen> {
       ),
     );
   }
-
 }

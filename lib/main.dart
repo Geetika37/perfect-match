@@ -6,6 +6,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
+import 'package:perfectmatch/screens/signupscreen/view/screens/profile1_screen.dart';
+import 'package:perfectmatch/screens/signupscreen/view/signup_screen.dart';
 import 'package:perfectmatch/screens/splashscreen/view/splash_screen.dart';
 
 void main() {
@@ -36,7 +38,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Perfect Match',
-      home: SplashScreen(),
+      // home: const Profile1Screen(),
+      // home: SplashScreen(),
+      home: SignupScreen(),
     );
   }
 }

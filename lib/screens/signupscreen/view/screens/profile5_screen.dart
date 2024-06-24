@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/mainscreen/view/main_screen.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profile5_screen/models/checklists.dart';
-import 'package:perfectmatch/screens/profilescreen/widgets/check_list.dart';
-import 'package:perfectmatch/screens/profilescreen/widgets/check_list_only_one.dart';
+import 'package:perfectmatch/screens/signupscreen/controllers/controller.dart';
+import 'package:perfectmatch/screens/signupscreen/models/checklists.dart';
+import 'package:perfectmatch/screens/signupscreen/widgets/check_list.dart';
+import 'package:perfectmatch/screens/signupscreen/widgets/check_list_only_one.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/screens/widget/snackbar.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
@@ -19,6 +19,8 @@ class Profile5Screen extends StatefulWidget {
 }
 
 class _Profile5ScreenState extends State<Profile5Screen> {
+  final RegisterController registerController = Get.put(RegisterController());
+
   int? selectedfamilyBackground;
   final List<bool> selectedfamilyBackgroundList =
       List.generate(3, (index) => false);
@@ -37,7 +39,7 @@ class _Profile5ScreenState extends State<Profile5Screen> {
 
   void validationErrorMessage() {
     showErrorMessage(context,
-        message: 'Please select Family background,profession and Sibiling.');
+        message: 'Please select Family background, profession, and Sibiling.');
   }
 
   @override
@@ -83,6 +85,10 @@ class _Profile5ScreenState extends State<Profile5Screen> {
                         selectedfamilyBackgroundList[i] = i == index;
                       }
                       selectedfamilyBackground = index;
+                      registerController
+                              .preferredFamilyBackgroundController.value =
+                          familyBackgroundList[
+                              index]; // Store selected family background
                     });
                   },
                   crossAxisCount: 3,
@@ -105,6 +111,10 @@ class _Profile5ScreenState extends State<Profile5Screen> {
                         selectedsiblingsNumberList[i] = i == index;
                       }
                       selectedsiblingsNumber = index;
+                      registerController
+                              .preferredSiblingsNumberController.value =
+                          siblingsNumberList[
+                              index]; // Store selected number of siblings
                     });
                   },
                   crossAxisCount: 3,
@@ -122,6 +132,8 @@ class _Profile5ScreenState extends State<Profile5Screen> {
                   onChanged: (index, value) {
                     setState(() {
                       selectedprofession[index] = value!;
+                      registerController.preferredProfessionController.value =
+                          professionList[index]; // Store selected profession
                     });
                   },
                   crossAxisCount: 1,
@@ -131,7 +143,8 @@ class _Profile5ScreenState extends State<Profile5Screen> {
                 text: 'Next',
                 onTap: () {
                   if (isValidSelection()) {
-                    Get.to(() => const MainScreen());
+                    // Get.to(() => const MainScreen());
+                    registerController.registerUser();
                   } else {
                     validationErrorMessage();
                   }

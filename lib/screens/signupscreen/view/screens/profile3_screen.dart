@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/size.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profile3_screen/models/hobbieslist.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profile3_screen/models/interestlist.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profile4_screen/views/profile4_screen.dart';
-import 'package:perfectmatch/screens/profilescreen/widgets/check_list.dart';
+import 'package:perfectmatch/screens/signupscreen/widgets/hobbieslist.dart';
+import 'package:perfectmatch/screens/signupscreen/widgets/interestlist.dart';
+import 'package:perfectmatch/screens/signupscreen/view/screens/profile4_screen.dart';
+import 'package:perfectmatch/screens/signupscreen/widgets/check_list.dart';
 import 'package:perfectmatch/screens/widget/buttons.dart';
 import 'package:perfectmatch/screens/widget/snackbar.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
+import 'package:perfectmatch/screens/signupscreen/controllers/controller.dart'; // Ensure the correct import for the controller
 
 class Profile3Screen extends StatefulWidget {
   const Profile3Screen({super.key});
@@ -19,19 +20,30 @@ class Profile3Screen extends StatefulWidget {
 }
 
 class _Profile3ScreenState extends State<Profile3Screen> {
-  final List<bool> selectedHobbies = List.generate(10, (index) => false);
-  final List<bool> selectedInterest = List.generate(9, (index) => false);
-
+  final RegisterController registerController = Get.put(RegisterController());
   final TextEditingController otherHobbyController = TextEditingController();
   final TextEditingController otherInterestController = TextEditingController();
 
   bool isValidSelection() {
-    return selectedHobbies.contains(true) && selectedInterest.contains(true);
+    return registerController.hobbiesController.value.isNotEmpty &&
+        registerController.interestController.value.isNotEmpty;
   }
 
   void validationErrorMessage() {
     showErrorMessage(context,
         message: 'Please select at least one hobby and one interest.');
+  }
+
+  void updateSelectedHobbiesAndInterests() {
+    registerController.hobbiesController.value = hobbiesList
+        .where((hobby) =>
+            registerController.hobbiesController.value.contains(hobby))
+        .join(',');
+
+    registerController.interestController.value = interestList
+        .where((interest) =>
+            registerController.interestController.value.contains(interest))
+        .join(',');
   }
 
   @override
@@ -72,16 +84,32 @@ class _Profile3ScreenState extends State<Profile3Screen> {
                       height: screenHeight * 0.2,
                       child: CheckList(
                         checkList: hobbiesList,
-                        selected: selectedHobbies,
+                        selected: List<bool>.generate(
+                            hobbiesList.length,
+                            (index) => registerController
+                                .hobbiesController.value
+                                .split(',')
+                                .contains(hobbiesList[index])),
                         onChanged: (index, value) {
                           setState(() {
-                            selectedHobbies[index] = value!;
+                            var selectedHobbies = registerController
+                                .hobbiesController.value
+                                .split(',');
+                            if (value == true) {
+                              selectedHobbies.add(hobbiesList[index]);
+                            } else {
+                              selectedHobbies.remove(hobbiesList[index]);
+                            }
+                            registerController.hobbiesController.value =
+                                selectedHobbies.join(',');
                           });
                         },
                         crossAxisCount: 3,
                       ),
                     ),
-                    if (selectedHobbies[9])
+                    if (registerController.hobbiesController.value
+                        .split(',')
+                        .contains('Other'))
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: TextFormField(
@@ -137,16 +165,32 @@ class _Profile3ScreenState extends State<Profile3Screen> {
                       height: screenHeight * 0.2,
                       child: CheckList(
                         checkList: interestList,
-                        selected: selectedInterest,
+                        selected: List<bool>.generate(
+                            interestList.length,
+                            (index) => registerController
+                                .interestController.value
+                                .split(',')
+                                .contains(interestList[index])),
                         onChanged: (index, value) {
                           setState(() {
-                            selectedInterest[index] = value!;
+                            var selectedInterests = registerController
+                                .interestController.value
+                                .split(',');
+                            if (value == true) {
+                              selectedInterests.add(interestList[index]);
+                            } else {
+                              selectedInterests.remove(interestList[index]);
+                            }
+                            registerController.interestController.value =
+                                selectedInterests.join(',');
                           });
                         },
                         crossAxisCount: 3,
                       ),
                     ),
-                    if (selectedInterest[8])
+                    if (registerController.interestController.value
+                        .split(',')
+                        .contains('Other'))
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: TextFormField(
@@ -203,6 +247,7 @@ class _Profile3ScreenState extends State<Profile3Screen> {
                 text: 'Next',
                 onTap: () {
                   if (isValidSelection()) {
+                    updateSelectedHobbiesAndInterests();
                     Get.to(const Profile4Screen());
                   } else {
                     validationErrorMessage();
@@ -216,5 +261,4 @@ class _Profile3ScreenState extends State<Profile3Screen> {
       ),
     );
   }
-
 }

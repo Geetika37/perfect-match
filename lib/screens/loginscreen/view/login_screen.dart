@@ -5,7 +5,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 import 'package:perfectmatch/screens/loginscreen/controller/login_controller.dart';
-import 'package:perfectmatch/screens/otpscreen/view/otp_screen.dart';
+import 'package:perfectmatch/screens/mainscreen/view/main_screen.dart';
 import 'package:perfectmatch/screens/signupscreen/view/signup_screen.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 import '../../../utils/image_helper.dart';
@@ -91,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                                   .login(emailMobileInput.text)
                                   .then((response) {
                                 if (response != null && response.result) {
-                                  Get.to(() => const OtpScreen());
+                                  Get.to(() => const MainScreen());
                                 }
                               });
                             }

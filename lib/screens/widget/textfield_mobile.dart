@@ -1,12 +1,12 @@
+
+// mobile textformfield
+
 import 'package:flutter/material.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/constants/styles/textstyle.dart';
 
-
-// textformfield
-
-class InputTextFormField extends StatefulWidget {
-  const InputTextFormField(
+class InputMobilee extends StatefulWidget {
+  const InputMobilee(
       {super.key,
       required this.labelText,
       required this.hintText,
@@ -18,10 +18,10 @@ class InputTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
 
   @override
-  State<InputTextFormField> createState() => _InputTextFormFieldState();
+  State<InputMobilee> createState() => _InputMobileeState();
 }
 
-class _InputTextFormFieldState extends State<InputTextFormField> {
+class _InputMobileeState extends State<InputMobilee> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,17 +30,22 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
       ),
       child: Stack(children: [
         TextFormField(
+          maxLength: 10,
           controller: widget.textController,
           keyboardType: widget.keyboardType,
           validator: (value) {
-            if (value!.isEmpty) {
-              return 'Enter value';
+            if (value!.isEmpty || !RegExp(r'^\+?1?\d{9,15}$').hasMatch(value)) {
+              return 'Enter Correct Phone Number';
             } else {
               return null;
             }
           },
           autocorrect: true,
           cursorColor: Colors.black,
+          buildCounter: (BuildContext context,
+              {int? currentLength, int? maxLength, bool? isFocused}) {
+            return null; // Hides the counter
+          },
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderSide:
@@ -74,11 +79,7 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
             hintText: widget.hintText,
             hintStyle: lexend(Colors.black12, 14, FontWeight.w400),
           ),
-          style: const TextStyle(
-              fontSize: 14,
-              color: AppColors.textFormFieldColor,
-              fontWeight: FontWeight.w300,
-              height: 1.7),
+          style: lexend(AppColors.textFormFieldColor, 14, FontWeight.w300),
           textCapitalization: TextCapitalization.sentences,
         ),
         Positioned(
@@ -93,5 +94,3 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
     );
   }
 }
-
-

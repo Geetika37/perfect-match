@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:perfectmatch/constants/app_colors.dart';
 import 'package:perfectmatch/screens/mainscreen/widgets/profile_card.dart';
 import 'package:perfectmatch/screens/premiumplans/views/premium_plans.dart';
-import 'package:perfectmatch/screens/profilescreen/screens/profileview/views/profile_details.dart';
+import 'package:perfectmatch/screens/profileview/views/profile_details.dart';
 import 'package:perfectmatch/screens/search/views/search_page.dart';
 import 'package:perfectmatch/utils/common_helper.dart';
 import 'package:perfectmatch/utils/image_helper.dart';

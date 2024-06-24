@@ -96,93 +96,93 @@ class UploadPicBoxRectangleState extends State<UploadPicBoxRectangle> {
   }
 }
 
-class UploadPicBox extends StatefulWidget {
-  const UploadPicBox({
-    super.key,
-    required this.deviceWidth,
-    required this.onImageSelected,
-  });
+// class UploadPicBox extends StatefulWidget {
+//   const UploadPicBox({
+//     super.key,
+//     required this.deviceWidth,
+//     required this.onImageSelected,
+//   });
 
-  final double deviceWidth;
-  final VoidCallback onImageSelected;
+//   final double deviceWidth;
+//   final VoidCallback onImageSelected;
 
-  @override
-  State<UploadPicBox> createState() => UploadPicBoxState();
-}
+//   @override
+//   State<UploadPicBox> createState() => UploadPicBoxState();
+// }
 
-class UploadPicBoxState extends State<UploadPicBox> {
-  File? _image;
-  final ImageHelper _imageHelper = ImageHelper();
+// class UploadPicBoxState extends State<UploadPicBox> {
+//   File? _image;
+//   final ImageHelper _imageHelper = ImageHelper();
 
-  Future<void> _pickAndCropImage() async {
-    List<XFile> pickedFiles = await _imageHelper.pickImage(multiple: false);
-    if (pickedFiles.isNotEmpty) {
-      XFile pickedFile = pickedFiles.first;
-      CroppedFile? croppedFile = await _imageHelper.crop(file: pickedFile);
-      if (croppedFile != null) {
-        setState(() {
-          _image = File(croppedFile.path);
-        });
-        widget.onImageSelected();
-      }
-    }
-  }
+//   Future<void> _pickAndCropImage() async {
+//     List<XFile> pickedFiles = await _imageHelper.pickImage(multiple: false);
+//     if (pickedFiles.isNotEmpty) {
+//       XFile pickedFile = pickedFiles.first;
+//       CroppedFile? croppedFile = await _imageHelper.crop(file: pickedFile);
+//       if (croppedFile != null) {
+//         setState(() {
+//           _image = File(croppedFile.path);
+//         });
+//         widget.onImageSelected();
+//       }
+//     }
+//   }
 
-  bool isImageSelected() {
-    return _image != null;
-  }
+//   bool isImageSelected() {
+//     return _image != null;
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: (widget.deviceWidth - 60) / 3,
-      height: (widget.deviceWidth - 60) / 3,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border: Border.all(width: 2, color: AppColors.primarySecondary),
-        // color: const Color.fromARGB(255, 200, 197, 197).withOpacity(0.4),
-        color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.4),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: (widget.deviceWidth - 60) / 3,
+//       height: (widget.deviceWidth - 60) / 3,
+//       alignment: Alignment.center,
+//       decoration: BoxDecoration(
+//         border: Border.all(width: 2, color: AppColors.primarySecondary),
+//         // color: const Color.fromARGB(255, 200, 197, 197).withOpacity(0.4),
+//         color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.4),
 
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Stack(
-        children: [
-          Center(
-            child: _image != null
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.file(
-                      _image!,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                : const Icon(
-                    Icons.image,
-                    color: AppColors.inputDullColor,
-                  ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: GestureDetector(
-                onTap: _pickAndCropImage,
-                // child: const Icon(
-                //   Icons.add_a_photo,
-                //   color: AppColors.primary,
-                //   size: 20,
-                // ),
-                child: SvgPicture.asset('assets/svg/uploadimage.svg'),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//         borderRadius: BorderRadius.circular(10),
+//       ),
+//       child: Stack(
+//         children: [
+//           Center(
+//             child: _image != null
+//                 ? ClipRRect(
+//                     borderRadius: BorderRadius.circular(10),
+//                     child: Image.file(
+//                       _image!,
+//                       width: double.infinity,
+//                       height: double.infinity,
+//                       fit: BoxFit.cover,
+//                     ),
+//                   )
+//                 : const Icon(
+//                     Icons.image,
+//                     color: AppColors.inputDullColor,
+//                   ),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Align(
+//               alignment: Alignment.bottomRight,
+//               child: GestureDetector(
+//                 onTap: _pickAndCropImage,
+//                 // child: const Icon(
+//                 //   Icons.add_a_photo,
+//                 //   color: AppColors.primary,
+//                 //   size: 20,
+//                 // ),
+//                 child: SvgPicture.asset('assets/svg/uploadimage.svg'),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 
 
